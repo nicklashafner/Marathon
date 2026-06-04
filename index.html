@@ -271,6 +271,148 @@ body {
 .bpm-vila { background: rgba(122,122,128,0.12); color: var(--muted); }
 .bpm-race { background: rgba(255,107,53,0.3); color: #fff; }
 
+/* ── TIMER VIEW ── */
+.timer-view { padding: 0 16px 20px; }
+.timer-display {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 20px;
+  text-align: center;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.timer-display::before {
+  content: '⏱';
+  position: absolute;
+  right: -10px; top: -10px;
+  font-size: 100px;
+  opacity: 0.04;
+  pointer-events: none;
+}
+.timer-label { font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
+.timer-digits {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 72px;
+  letter-spacing: 4px;
+  line-height: 1;
+  color: var(--text);
+}
+.timer-digits.running { color: var(--accent); }
+.timer-ms {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+.timer-btn-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.timer-btn {
+  flex: 1;
+  padding: 16px;
+  border-radius: 14px;
+  border: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.timer-btn:active { opacity: 0.7; }
+.timer-btn.start { background: var(--accent); color: #0e0e0f; }
+.timer-btn.stop  { background: var(--accent2); color: #fff; }
+.timer-btn.reset { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+.timer-btn.lap   { background: var(--surface2); color: var(--accent3); border: 1px solid rgba(78,205,196,0.3); }
+
+.interval-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.interval-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.interval-title { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 1px; }
+.interval-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.interval-row { display: flex; align-items: center; gap: 12px; }
+.interval-row label { font-size: 12px; color: var(--muted); width: 80px; flex-shrink: 0; }
+.interval-controls { display: flex; align-items: center; gap: 10px; flex: 1; }
+.interval-adj {
+  width: 36px; height: 36px;
+  background: var(--border);
+  border: none;
+  color: var(--text);
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.interval-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  color: var(--accent);
+  min-width: 48px;
+  text-align: center;
+}
+.interval-start-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent3);
+  color: #0e0e0f;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+.interval-status {
+  background: rgba(78,205,196,0.08);
+  border: 1px solid rgba(78,205,196,0.2);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 16px;
+  display: none;
+}
+.interval-status.active { display: block; }
+.interval-phase-label { font-size: 10px; letter-spacing: 3px; color: var(--accent3); text-transform: uppercase; margin-bottom: 6px; }
+.interval-phase-name { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--text); }
+.interval-phase-digits { font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: var(--accent3); letter-spacing: 2px; line-height: 1; }
+.interval-round { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+.laps-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.laps-header { padding: 12px 16px; border-bottom: 1px solid var(--border); font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; color: var(--muted); }
+.lap-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 13px;
+}
+.lap-row:last-child { border-bottom: none; }
+.lap-num { color: var(--muted); font-size: 11px; }
+.lap-time { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; }
+.lap-delta { font-size: 11px; color: var(--muted); }
+
 .phase-tip {
   background: rgba(232,255,71,0.05);
   border-top: 1px solid rgba(232,255,71,0.1);
@@ -469,6 +611,77 @@ body {
     <div class="phase-list" id="phaseList"></div>
   </div>
 
+  <!-- VIEW: TIMER -->
+  <div class="view" id="view-timer">
+    <div class="timer-view">
+      <div style="padding:0 0 8px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px">TIMER</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Stoppur &amp; intervallklocka</div>
+      </div>
+
+      <!-- STOPWATCH -->
+      <div class="timer-display">
+        <div class="timer-label">Stoppur</div>
+        <div class="timer-digits" id="swDigits">00:00</div>
+        <div class="timer-ms" id="swMs">.00</div>
+      </div>
+      <div class="timer-btn-row">
+        <button class="timer-btn start" id="swStartBtn" onclick="swToggle()">START</button>
+        <button class="timer-btn lap" onclick="swLap()">VARV</button>
+        <button class="timer-btn reset" onclick="swReset()">NOLLST.</button>
+      </div>
+
+      <!-- LAPS -->
+      <div class="laps-card" id="lapsCard" style="display:none;margin-bottom:16px">
+        <div class="laps-header">VARV</div>
+        <div id="lapsList"></div>
+      </div>
+
+      <!-- INTERVAL TIMER -->
+      <div class="interval-card">
+        <div class="interval-header">
+          <div class="interval-title">INTERVALLKLOCKA</div>
+        </div>
+        <div class="interval-body">
+          <div class="interval-row">
+            <label>Arbete</label>
+            <div class="interval-controls">
+              <button class="interval-adj" onclick="adjInterval('work',-5)">−</button>
+              <div class="interval-val" id="workVal">60s</div>
+              <button class="interval-adj" onclick="adjInterval('work',5)">+</button>
+            </div>
+          </div>
+          <div class="interval-row">
+            <label>Vila</label>
+            <div class="interval-controls">
+              <button class="interval-adj" onclick="adjInterval('rest',-5)">−</button>
+              <div class="interval-val" id="restVal">60s</div>
+              <button class="interval-adj" onclick="adjInterval('rest',5)">+</button>
+            </div>
+          </div>
+          <div class="interval-row">
+            <label>Rundor</label>
+            <div class="interval-controls">
+              <button class="interval-adj" onclick="adjInterval('rounds',-1)">−</button>
+              <div class="interval-val" id="roundsVal">8</div>
+              <button class="interval-adj" onclick="adjInterval('rounds',1)">+</button>
+            </div>
+          </div>
+          <button class="interval-start-btn" id="intStartBtn" onclick="intToggle()">STARTA INTERVALLER</button>
+        </div>
+      </div>
+
+      <!-- INTERVAL STATUS -->
+      <div class="interval-status" id="intStatus">
+        <div class="interval-phase-label" id="intPhaseLabel">Arbete</div>
+        <div class="interval-phase-name" id="intPhaseName">SPRING!</div>
+        <div class="interval-phase-digits" id="intDigits">60</div>
+        <div class="interval-round" id="intRound">Runda 1 av 8</div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- VIEW: PROGRESS -->
   <div class="view" id="view-progress">
     <div class="progress-view">
@@ -527,6 +740,9 @@ body {
   </button>
   <button class="nav-btn" onclick="switchView('schema',this)">
     <span class="nav-icon">📋</span>Schema
+  </button>
+  <button class="nav-btn" onclick="switchView('timer',this)">
+    <span class="nav-icon">⏱</span>Timer
   </button>
   <button class="nav-btn" onclick="switchView('progress',this)">
     <span class="nav-icon">📈</span>Progress
@@ -719,6 +935,148 @@ const PHASES = [
         ]},
     ]},
 ];
+
+// ── STOPWATCH ──
+let swInterval = null, swStart = 0, swElapsed = 0, swRunning = false;
+let laps = [], lastLapElapsed = 0;
+
+function swTick() {
+  const now = Date.now();
+  const total = swElapsed + (now - swStart);
+  const mins = Math.floor(total / 60000);
+  const secs = Math.floor((total % 60000) / 1000);
+  const ms = Math.floor((total % 1000) / 10);
+  document.getElementById('swDigits').textContent =
+    String(mins).padStart(2,'0') + ':' + String(secs).padStart(2,'0');
+  document.getElementById('swMs').textContent = '.' + String(ms).padStart(2,'0');
+}
+
+function swToggle() {
+  if (!swRunning) {
+    swStart = Date.now();
+    swInterval = setInterval(swTick, 30);
+    swRunning = true;
+    document.getElementById('swStartBtn').textContent = 'STOPP';
+    document.getElementById('swStartBtn').className = 'timer-btn stop';
+    document.getElementById('swDigits').classList.add('running');
+  } else {
+    clearInterval(swInterval);
+    swElapsed += Date.now() - swStart;
+    swRunning = false;
+    document.getElementById('swStartBtn').textContent = 'FORTSÄTT';
+    document.getElementById('swStartBtn').className = 'timer-btn start';
+    document.getElementById('swDigits').classList.remove('running');
+  }
+}
+
+function swLap() {
+  if (!swRunning && swElapsed === 0) return;
+  const total = swElapsed + (swRunning ? Date.now() - swStart : 0);
+  const lapTime = total - lastLapElapsed;
+  laps.unshift({ n: laps.length + 1, total, lapTime });
+  lastLapElapsed = total;
+  renderLaps();
+}
+
+function swReset() {
+  clearInterval(swInterval);
+  swElapsed = 0; swRunning = false; laps = []; lastLapElapsed = 0;
+  document.getElementById('swDigits').textContent = '00:00';
+  document.getElementById('swMs').textContent = '.00';
+  document.getElementById('swStartBtn').textContent = 'START';
+  document.getElementById('swStartBtn').className = 'timer-btn start';
+  document.getElementById('swDigits').classList.remove('running');
+  document.getElementById('lapsCard').style.display = 'none';
+  document.getElementById('lapsList').innerHTML = '';
+}
+
+function fmtTime(ms) {
+  const m = Math.floor(ms/60000), s = Math.floor((ms%60000)/1000), cs = Math.floor((ms%1000)/10);
+  return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'.'+String(cs).padStart(2,'0');
+}
+
+function renderLaps() {
+  document.getElementById('lapsCard').style.display = 'block';
+  document.getElementById('lapsList').innerHTML = laps.map((l,i) => {
+    const prev = laps[i+1];
+    const delta = prev ? (l.lapTime - prev.lapTime) : 0;
+    const sign = delta > 0 ? '+' : '';
+    const deltaStr = prev ? sign + ((delta/1000).toFixed(1)) + 's' : '–';
+    return `<div class="lap-row">
+      <span class="lap-num">VARV ${l.n}</span>
+      <span class="lap-time">${fmtTime(l.lapTime)}</span>
+      <span class="lap-delta" style="color:${delta>0?'var(--accent2)':delta<0?'var(--green)':'var(--muted)'}">${deltaStr}</span>
+    </div>`;
+  }).join('');
+}
+
+// ── INTERVAL TIMER ──
+let intSettings = { work: 60, rest: 60, rounds: 8 };
+let intInterval = null, intRunning = false;
+let intCurrentRound = 1, intPhase = 'work', intRemaining = 0;
+
+function adjInterval(key, delta) {
+  const min = key === 'rounds' ? 1 : 5;
+  intSettings[key] = Math.max(min, intSettings[key] + delta);
+  const suffix = key === 'rounds' ? '' : 's';
+  document.getElementById(key + 'Val').textContent = intSettings[key] + suffix;
+}
+
+function intToggle() {
+  if (intRunning) {
+    clearInterval(intInterval);
+    intRunning = false;
+    document.getElementById('intStartBtn').textContent = 'STARTA INTERVALLER';
+    document.getElementById('intStartBtn').style.background = 'var(--accent3)';
+    document.getElementById('intStatus').classList.remove('active');
+    intCurrentRound = 1; intPhase = 'work';
+  } else {
+    intCurrentRound = 1; intPhase = 'work';
+    intRemaining = intSettings.work;
+    intRunning = true;
+    document.getElementById('intStartBtn').textContent = 'AVBRYT';
+    document.getElementById('intStartBtn').style.background = 'var(--accent2)';
+    document.getElementById('intStatus').classList.add('active');
+    updateIntDisplay();
+    intInterval = setInterval(intTick, 1000);
+  }
+}
+
+function intTick() {
+  intRemaining--;
+  if (intRemaining <= 0) {
+    if (intPhase === 'work') {
+      intPhase = 'rest';
+      intRemaining = intSettings.rest;
+    } else {
+      intCurrentRound++;
+      if (intCurrentRound > intSettings.rounds) {
+        clearInterval(intInterval);
+        intRunning = false;
+        document.getElementById('intStartBtn').textContent = 'STARTA INTERVALLER';
+        document.getElementById('intStartBtn').style.background = 'var(--accent3)';
+        document.getElementById('intPhaseLabel').textContent = 'Klart!';
+        document.getElementById('intPhaseName').textContent = 'BRA JOBBAT!';
+        document.getElementById('intDigits').textContent = '✓';
+        return;
+      }
+      intPhase = 'work';
+      intRemaining = intSettings.work;
+    }
+  }
+  updateIntDisplay();
+}
+
+function updateIntDisplay() {
+  const isWork = intPhase === 'work';
+  document.getElementById('intPhaseLabel').textContent = isWork ? 'Arbete' : 'Vila';
+  document.getElementById('intPhaseName').textContent = isWork ? 'SPRING!' : 'VILA';
+  document.getElementById('intDigits').textContent = intRemaining;
+  document.getElementById('intRound').textContent = 'Runda ' + intCurrentRound + ' av ' + intSettings.rounds;
+  document.getElementById('intStatus').style.borderColor = isWork ? 'rgba(232,255,71,0.3)' : 'rgba(78,205,196,0.2)';
+  document.getElementById('intPhaseLabel').style.color = isWork ? 'var(--accent)' : 'var(--accent3)';
+  document.getElementById('intDigits').style.color = isWork ? 'var(--accent)' : 'var(--accent3)';
+}
 
 // ── RENDER PHASES ──
 function renderPhases() {
