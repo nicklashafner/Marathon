@@ -423,6 +423,182 @@ body {
 }
 .phase-tip strong { color: var(--accent); }
 
+/* ── CHECK BUTTON ── */
+.check-btn {
+  width: 30px; height: 30px;
+  background: none;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.check-btn.checked {
+  background: var(--green);
+  border-color: var(--green);
+  color: #0e0e0f;
+  font-size: 15px;
+}
+.day-row.day-done .day-text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+/* ── ADAPT BANNER ── */
+.adapt-banner {
+  margin: 0 0 12px;
+  background: rgba(255,107,53,0.08);
+  border: 1px solid rgba(255,107,53,0.3);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.adapt-banner strong { color: var(--accent2); }
+.adapt-banner.partial {
+  background: rgba(255,179,71,0.08);
+  border-color: rgba(255,179,71,0.3);
+}
+.adapt-banner.partial strong { color: var(--orange); }
+.adapt-banner.good {
+  background: rgba(127,215,127,0.08);
+  border-color: rgba(127,215,127,0.3);
+}
+.adapt-banner.good strong { color: var(--green); }
+
+/* ── SETTINGS BUTTON ── */
+.settings-btn {
+  width: 36px; height: 36px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── SETTINGS MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 200;
+  align-items: flex-end;
+}
+.modal-overlay.open { display: flex; }
+.modal-sheet {
+  background: var(--surface);
+  border-radius: 20px 20px 0 0;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  padding: 24px 20px;
+  padding-bottom: calc(var(--safe-bottom) + 28px);
+  width: 100%;
+}
+.modal-handle {
+  width: 36px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+.modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; margin-bottom: 6px; }
+.modal-sub { font-size: 12px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+.api-input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 14px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  outline: none;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+.api-input:focus { border-color: var(--accent); }
+.modal-btn-row { display: flex; gap: 10px; }
+.modal-btn {
+  flex: 1; padding: 13px;
+  border-radius: 12px; border: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px; letter-spacing: 1px;
+  cursor: pointer;
+}
+.modal-btn.primary { background: var(--accent); color: #0e0e0f; }
+.modal-btn.secondary { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+.modal-status {
+  font-size: 12px; color: var(--green);
+  margin-top: 12px; text-align: center; display: none;
+}
+.modal-status.error { color: var(--accent2); }
+.api-key-indicator {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--muted);
+  margin-bottom: 14px; padding: 10px 12px;
+  background: rgba(127,215,127,0.06);
+  border: 1px solid rgba(127,215,127,0.2);
+  border-radius: 8px;
+}
+.api-key-indicator.missing {
+  background: rgba(122,122,128,0.06);
+  border-color: var(--border);
+}
+
+/* ── AI ADVICE ── */
+.ai-advice-btn {
+  width: 100%; margin-top: 12px; padding: 15px;
+  background: linear-gradient(135deg, rgba(192,132,252,0.1) 0%, rgba(78,205,196,0.08) 100%);
+  border: 1px solid rgba(192,132,252,0.3);
+  border-radius: 14px;
+  color: var(--purple);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px; letter-spacing: 2px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: opacity 0.2s;
+}
+.ai-advice-btn:disabled { opacity: 0.5; cursor: default; }
+.ai-card {
+  margin-top: 12px;
+  background: var(--surface);
+  border: 1px solid rgba(192,132,252,0.25);
+  border-radius: 14px;
+  padding: 18px;
+  display: none;
+}
+.ai-card.visible { display: block; }
+.ai-card-label {
+  font-size: 10px; letter-spacing: 3px; color: var(--purple);
+  text-transform: uppercase; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.ai-card-text { font-size: 13px; color: var(--text); line-height: 1.75; }
+
+/* ── WEEK STATS ── */
+.week-stats {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.week-stat-pill {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+.week-stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--accent); line-height: 1; }
+.week-stat-l { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
 /* ── PROGRESS VIEW ── */
 .progress-view { padding: 0 16px 20px; }
 .progress-hero {
@@ -507,7 +683,10 @@ body {
     <div class="topbar-title">MARATHON <span>PREP</span></div>
     <div class="topbar-sub">52 VECKOR · NICKLAS</div>
   </div>
-  <div class="hrmax-badge">♥ 183 bpm</div>
+  <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+    <div class="hrmax-badge">♥ 183 bpm</div>
+    <button class="settings-btn" onclick="openSettings()" title="Inställningar">⚙️</button>
+  </div>
 </div>
 
 <!-- SCROLL AREA -->
@@ -521,8 +700,8 @@ body {
       <div class="hero-meta">12 månader · HRmax 183 bpm · Ålder 37</div>
       <div class="stat-row">
         <div class="stat-box"><div class="stat-n">52</div><div class="stat-l">Veckor</div></div>
-        <div class="stat-box"><div class="stat-n">6</div><div class="stat-l">Faser</div></div>
-        <div class="stat-box"><div class="stat-n">~2500</div><div class="stat-l">Total km</div></div>
+        <div class="stat-box"><div class="stat-n">3</div><div class="stat-l">Pass/vecka</div></div>
+        <div class="stat-box"><div class="stat-n">~1600</div><div class="stat-l">Total km</div></div>
         <div class="stat-box"><div class="stat-n">42,2</div><div class="stat-l">Tävling km</div></div>
       </div>
     </div>
@@ -718,17 +897,45 @@ body {
         <div class="progress-desc" id="progressPhaseDesc">Vecka 1–12 · 25–55 km/v</div>
       </div>
 
-      <div class="current-week-card">
+      <div class="week-stats" id="weekStats"></div>
+      <div id="adaptBanner"></div>
+      <div class="current-week-card" style="margin-bottom:0">
         <div class="cwc-header">
           <div class="cwc-title" id="cwcTitle">VECKANS PASS</div>
           <div class="cwc-phase" id="cwcPhase">Fas 1</div>
         </div>
         <div id="cwcDays"></div>
       </div>
+      <button class="ai-advice-btn" id="aiAdviceBtn" onclick="requestAIAdvice()">
+        ✨ FÅ AI-RÅD FRÅN CLAUDE
+      </button>
+      <div class="ai-card" id="aiCard">
+        <div class="ai-card-label">✦ Claude · Personlig AI-tränare</div>
+        <div class="ai-card-text" id="aiCardText"></div>
+      </div>
     </div>
   </div>
 
 </div><!-- /scroll-area -->
+
+<!-- SETTINGS MODAL -->
+<div class="modal-overlay" id="settingsModal" onclick="closeSettings(event)">
+  <div class="modal-sheet" onclick="event.stopPropagation()">
+    <div class="modal-handle"></div>
+    <div class="modal-title">⚙️ INSTÄLLNINGAR</div>
+    <div class="modal-sub">Klistra in din Anthropic API-nyckel för att aktivera personliga AI-råd från Claude. Nyckeln lagras bara lokalt på din enhet och skickas aldrig någon annanstans.</div>
+    <div class="api-key-indicator missing" id="keyIndicator">
+      <span id="keyIndicatorDot">⚪</span>
+      <span id="keyIndicatorText">Ingen API-nyckel inlagd</span>
+    </div>
+    <input type="password" class="api-input" id="apiKeyInput" placeholder="sk-ant-api03-…" autocomplete="off" />
+    <div class="modal-btn-row">
+      <button class="modal-btn secondary" onclick="closeSettings()">Stäng</button>
+      <button class="modal-btn primary" onclick="saveApiKey()">Spara nyckel</button>
+    </div>
+    <div class="modal-status" id="modalStatus"></div>
+  </div>
+</div>
 
 <!-- BOTTOM NAV -->
 <nav class="bottomnav">
@@ -753,185 +960,129 @@ body {
 // ── DATA ──
 const PHASES = [
   {
-    id:1, name:'GRUNDBYGGE', period:'Mån 1–3 · V. 1–12', km:'25–55 km/v',
+    id:1, name:'GRUNDBYGGE', period:'Mån 1–3 · V. 1–12', km:'20–35 km/v',
     color:'var(--accent3)', bg:'rgba(78,205,196,0.15)',
     startWeek:1, endWeek:12,
-    tip:'Fokus på rätt puls (Z2 = pratfart). Styrka 2×/vecka – höftstabilitet, gluteus, vader. Sov 7–9 h.',
+    tip:'Fokus på rätt puls (Z2 = pratfart). Komplettera gärna med styrka på vilodagarna – höftstabilitet, gluteus, vader. Sov 7–9 h.',
     weeks:[
-      { label:'V. 1–2 · Introduktion', km:'25–30',
+      { label:'V. 1–2 · Introduktion', km:'20–25',
         days:[
-          {d:'Mån', t:'Lätt löpning 40 min', bpm:'92–128', z:'z2'},
-          {d:'Tis', t:'Styrka & core 45 min', bpm:'Vila', z:'vila'},
-          {d:'Ons', t:'Löpning Z2 50 min', bpm:'110–128', z:'z2'},
-          {d:'Tor', t:'Vila / yoga', bpm:'–', z:'vila'},
-          {d:'Fre', t:'Tempo 5 km + strides', bpm:'128–146', z:'z3'},
-          {d:'Lör', t:'Långpass 12–14 km', bpm:'110–128', z:'z2'},
-          {d:'Sön', t:'Vila', bpm:'–', z:'vila'},
+          {d:'Pass 1', t:'Lätt löpning 40 min', bpm:'92–128', z:'z2'},
+          {d:'Pass 2', t:'Tempo 5 km + strides', bpm:'128–146', z:'z3'},
+          {d:'Pass 3', t:'Långpass 12–14 km', bpm:'110–128', z:'z2'},
         ]},
-      { label:'V. 3–4 · Bygger volym', km:'35–40',
+      { label:'V. 3–4 · Bygger volym', km:'25–30',
         days:[
-          {d:'Mån', t:'Lätt löpning 50 min', bpm:'110–128', z:'z2'},
-          {d:'Tis', t:'Fartlek 45 min', bpm:'110–146', z:'z3'},
-          {d:'Ons', t:'Lätt jogg + styrka', bpm:'92–128', z:'z2'},
-          {d:'Tor', t:'Vila', bpm:'–', z:'vila'},
-          {d:'Fre', t:'Tröskelintervaller 4×8 min', bpm:'146–165', z:'z4'},
-          {d:'Lör', t:'Långpass 16 km', bpm:'110–128', z:'z2'},
-          {d:'Sön', t:'Lätt återhämtning 30 min', bpm:'92–110', z:'z1'},
+          {d:'Pass 1', t:'Lätt löpning 50 min', bpm:'110–128', z:'z2'},
+          {d:'Pass 2', t:'Tröskelintervaller 4×8 min', bpm:'146–165', z:'z4'},
+          {d:'Pass 3', t:'Långpass 16 km', bpm:'110–128', z:'z2'},
         ]},
-      { label:'V. 5–8 · Aerob grund', km:'40–50',
+      { label:'V. 5–8 · Aerob grund', km:'28–35',
         days:[
-          {d:'Mån', t:'Lätt Z1–Z2 55 min', bpm:'92–128', z:'z2'},
-          {d:'Tis', t:'Intervall 6×1000 m', bpm:'146–165', z:'z4'},
-          {d:'Ons', t:'Lätt jogg 40 min', bpm:'92–110', z:'z1'},
-          {d:'Tor', t:'Styrka 45 min', bpm:'–', z:'vila'},
-          {d:'Fre', t:'Tempokörning 8 km', bpm:'128–146', z:'z3'},
-          {d:'Lör', t:'Långpass 18–22 km', bpm:'110–128', z:'z2'},
-          {d:'Sön', t:'Vila', bpm:'–', z:'vila'},
+          {d:'Pass 1', t:'Lätt Z1–Z2 55 min', bpm:'92–128', z:'z2'},
+          {d:'Pass 2', t:'Intervall 6×1000 m', bpm:'146–165', z:'z4'},
+          {d:'Pass 3', t:'Långpass 18–22 km', bpm:'110–128', z:'z2'},
         ]},
-      { label:'V. 9–12 · Halvmaratontest', km:'45–55',
+      { label:'V. 9–12 · Halvmaratontest', km:'30–35',
         days:[
-          {d:'Mån', t:'Lätt löpning 60 min', bpm:'92–128', z:'z2'},
-          {d:'Tis', t:'Backlöpning 10×60 s', bpm:'146–183', z:'z5'},
-          {d:'Ons', t:'Lätt jogg + core', bpm:'92–110', z:'z1'},
-          {d:'Tor', t:'Tröskelpass 2×20 min', bpm:'146–165', z:'z4'},
-          {d:'Fre', t:'Lätt 30 min', bpm:'92–110', z:'z1'},
-          {d:'Lör', t:'Halvmaraton testlopp', bpm:'128–165', z:'race'},
-          {d:'Sön', t:'Aktiv återhämtning', bpm:'92–110', z:'z1'},
+          {d:'Pass 1', t:'Lätt löpning 60 min', bpm:'92–128', z:'z2'},
+          {d:'Pass 2', t:'Backlöpning 10×60 s', bpm:'146–183', z:'z5'},
+          {d:'Pass 3', t:'Halvmaraton testlopp', bpm:'128–165', z:'race'},
         ]},
     ]},
   {
-    id:2, name:'AEROB UTVECKLING', period:'Mån 4–5 · V. 13–20', km:'55–70 km/v',
+    id:2, name:'AEROB UTVECKLING', period:'Mån 4–5 · V. 13–20', km:'35–50 km/v',
     color:'var(--green)', bg:'rgba(127,215,127,0.15)',
     startWeek:13, endWeek:20,
     tip:'Maratontempo = din planerade tävlingsfart. Testa energigels under långa pass för att vänja magen.',
     weeks:[
-      { label:'V. 13–16 · Volymökning', km:'55–65',
+      { label:'V. 13–16 · Volymökning', km:'35–45',
         days:[
-          {d:'Mån', t:'Lätt Z2 65 min', bpm:'110–128', z:'z2'},
-          {d:'Tis', t:'VO₂max intervaller 5×3 min', bpm:'165–183', z:'z5'},
-          {d:'Ons', t:'Lätt 50 min + styrka', bpm:'92–128', z:'z2'},
-          {d:'Tor', t:'Maratontempo 10 km', bpm:'128–146', z:'z3'},
-          {d:'Fre', t:'Lätt 40 min', bpm:'92–110', z:'z1'},
-          {d:'Lör', t:'Långpass 25 km', bpm:'110–128', z:'z2'},
-          {d:'Sön', t:'Lätt jogg 30 min', bpm:'92–110', z:'z1'},
+          {d:'Pass 1', t:'Lätt Z2 65 min', bpm:'110–128', z:'z2'},
+          {d:'Pass 2', t:'VO₂max intervaller 5×3 min', bpm:'165–183', z:'z5'},
+          {d:'Pass 3', t:'Långpass 25 km', bpm:'110–128', z:'z2'},
         ]},
-      { label:'V. 17–20 · Specifik uthållighet', km:'60–70',
+      { label:'V. 17–20 · Specifik uthållighet', km:'40–50',
         days:[
-          {d:'Mån', t:'Dubbel: fm 40 / em 30 min', bpm:'92–128', z:'z2'},
-          {d:'Tis', t:'Tröskelintervall 5×12 min', bpm:'146–165', z:'z4'},
-          {d:'Ons', t:'Lätt 55 min', bpm:'92–128', z:'z2'},
-          {d:'Tor', t:'Maratontempo 15 km', bpm:'128–146', z:'z3'},
-          {d:'Fre', t:'Vila / rörlighet', bpm:'–', z:'vila'},
-          {d:'Lör', t:'Långpass 28–30 km', bpm:'110–128', z:'z2'},
-          {d:'Sön', t:'Lätt återhämtning 40 min', bpm:'92–110', z:'z1'},
+          {d:'Pass 1', t:'Lätt Z2 65 min', bpm:'92–128', z:'z2'},
+          {d:'Pass 2', t:'Tröskelintervall 5×12 min', bpm:'146–165', z:'z4'},
+          {d:'Pass 3', t:'Långpass 28–30 km', bpm:'110–128', z:'z2'},
         ]},
     ]},
   {
-    id:3, name:'TOPPFORM', period:'Mån 6–8 · V. 21–32', km:'70–90 km/v',
+    id:3, name:'TOPPFORM', period:'Mån 6–8 · V. 21–32', km:'45–60 km/v',
     color:'var(--accent)', bg:'rgba(232,255,71,0.1)',
     startWeek:21, endWeek:32,
     tip:'35 km är ditt maxlångpass – du behöver inte springa längre. Välj tävlingsskor nu och stöt in dem.',
     weeks:[
-      { label:'V. 21–24 · Högvolym', km:'70–80',
+      { label:'V. 21–24 · Högvolym', km:'45–55',
         days:[
-          {d:'Mån', t:'Lätt 70 min', bpm:'92–128', z:'z2'},
-          {d:'Tis', t:'Intervall 8×800 m', bpm:'165–183', z:'z5'},
-          {d:'Ons', t:'Dubbel: fm 50 / em 40 min', bpm:'92–128', z:'z2'},
-          {d:'Tor', t:'Tröskel 2×25 min', bpm:'146–165', z:'z4'},
-          {d:'Fre', t:'Lätt 40 min', bpm:'92–110', z:'z1'},
-          {d:'Lör', t:'Långpass 32 km (del MT)', bpm:'110–146', z:'z3'},
-          {d:'Sön', t:'Återhämtning 35 min', bpm:'92–110', z:'z1'},
+          {d:'Pass 1', t:'Lätt Z2 70 min', bpm:'92–128', z:'z2'},
+          {d:'Pass 2', t:'Intervall 8×800 m', bpm:'165–183', z:'z5'},
+          {d:'Pass 3', t:'Långpass 32 km (sista 5 km MT)', bpm:'110–146', z:'z3'},
         ]},
-      { label:'V. 25–28 · Peak + halvmaraton', km:'75–85',
+      { label:'V. 25–28 · Peak + halvmaraton', km:'45–55',
         days:[
-          {d:'Mån', t:'Lätt Z2 75 min', bpm:'110–128', z:'z2'},
-          {d:'Tis', t:'Progression 12 km (sista 4 km MT)', bpm:'128–146', z:'z3'},
-          {d:'Ons', t:'Lätt 60 min + styrka', bpm:'92–128', z:'z2'},
-          {d:'Tor', t:'Tempo 10 km MT-fart', bpm:'128–146', z:'z3'},
-          {d:'Fre', t:'Vila', bpm:'–', z:'vila'},
-          {d:'Lör', t:'Halvmaraton tävling!', bpm:'128–165', z:'race'},
-          {d:'Sön', t:'Vila', bpm:'–', z:'vila'},
+          {d:'Pass 1', t:'Lätt Z2 75 min', bpm:'110–128', z:'z2'},
+          {d:'Pass 2', t:'Progression 12 km (sista 4 km MT)', bpm:'128–146', z:'z3'},
+          {d:'Pass 3', t:'Halvmaraton tävling!', bpm:'128–165', z:'race'},
         ]},
-      { label:'V. 29–32 · Maxlångpass 35 km', km:'80–90',
+      { label:'V. 29–32 · Maxlångpass 35 km', km:'50–60',
         days:[
-          {d:'Mån', t:'Lätt 80 min', bpm:'92–128', z:'z2'},
-          {d:'Tis', t:'Intervall 6×1600 m', bpm:'146–183', z:'z5'},
-          {d:'Ons', t:'Dubbel: 50+40 min', bpm:'92–128', z:'z2'},
-          {d:'Tor', t:'Maratontempo 18 km', bpm:'128–146', z:'z3'},
-          {d:'Fre', t:'Lätt 40 min', bpm:'92–110', z:'z1'},
-          {d:'Lör', t:'Långpass 35 km (Z2+MT)', bpm:'110–146', z:'z3'},
-          {d:'Sön', t:'Aktiv vila 30 min', bpm:'92–110', z:'z1'},
+          {d:'Pass 1', t:'Lätt Z2 80 min', bpm:'92–128', z:'z2'},
+          {d:'Pass 2', t:'Intervall 6×1600 m', bpm:'146–183', z:'z5'},
+          {d:'Pass 3', t:'Långpass 35 km (Z2 + MT)', bpm:'110–146', z:'z3'},
         ]},
     ]},
   {
-    id:4, name:'NEDTRAPPNING', period:'Mån 9 · V. 33–36', km:'55–65 km/v',
+    id:4, name:'NEDTRAPPNING', period:'Mån 9 · V. 33–36', km:'30–40 km/v',
     color:'var(--orange)', bg:'rgba(255,179,71,0.12)',
     startWeek:33, endWeek:36,
     tip:'Du kanske känner dig lat – det är meningen. Kroppen bygger muskler och lagrar glykogen. Sömn och näring är prioritet.',
     weeks:[
-      { label:'V. 33–36 · Cutback + kvalitet', km:'55–65',
+      { label:'V. 33–36 · Cutback + kvalitet', km:'30–40',
         days:[
-          {d:'Mån', t:'Lätt 55 min', bpm:'92–128', z:'z2'},
-          {d:'Tis', t:'Tröskelpass 3×15 min', bpm:'146–165', z:'z4'},
-          {d:'Ons', t:'Lätt 45 min', bpm:'92–128', z:'z2'},
-          {d:'Tor', t:'Maratontempo 10 km', bpm:'128–146', z:'z3'},
-          {d:'Fre', t:'Vila', bpm:'–', z:'vila'},
-          {d:'Lör', t:'Långpass 24 km', bpm:'110–128', z:'z2'},
-          {d:'Sön', t:'Lätt 30 min', bpm:'92–110', z:'z1'},
+          {d:'Pass 1', t:'Lätt Z2 55 min', bpm:'92–128', z:'z2'},
+          {d:'Pass 2', t:'Tröskelpass 3×15 min', bpm:'146–165', z:'z4'},
+          {d:'Pass 3', t:'Långpass 24 km', bpm:'110–128', z:'z2'},
         ]},
     ]},
   {
-    id:5, name:'FINSLIPNING', period:'Mån 10–11 · V. 37–48', km:'50–80 km/v',
+    id:5, name:'FINSLIPNING', period:'Mån 10–11 · V. 37–48', km:'35–50 km/v',
     color:'var(--accent2)', bg:'rgba(255,107,53,0.12)',
     startWeek:37, endWeek:48,
     tip:'Simuleringspasset (30 km, sista 10 km i MT) är årets viktigaste pass. Förbered loppdag-logistik: kläder, näring, transport.',
     weeks:[
-      { label:'V. 37–40 · Sista tunga block', km:'70–80',
+      { label:'V. 37–40 · Sista tunga block', km:'40–50',
         days:[
-          {d:'Mån', t:'Lätt 65 min', bpm:'92–128', z:'z2'},
-          {d:'Tis', t:'Krydda: 3×5 km MT', bpm:'128–146', z:'z3'},
-          {d:'Ons', t:'Lätt 50 min + core', bpm:'92–128', z:'z2'},
-          {d:'Tor', t:'Intervall 10×400 m', bpm:'165–183', z:'z5'},
-          {d:'Fre', t:'Lätt 40 min', bpm:'92–110', z:'z1'},
-          {d:'Lör', t:'Simulering: 30 km (sista 10 km MT)', bpm:'110–146', z:'z3'},
-          {d:'Sön', t:'Lätt återhämtning 40 min', bpm:'92–110', z:'z1'},
+          {d:'Pass 1', t:'Lätt Z2 65 min', bpm:'92–128', z:'z2'},
+          {d:'Pass 2', t:'Krydda: 3×5 km MT', bpm:'128–146', z:'z3'},
+          {d:'Pass 3', t:'Simulering: 30 km (sista 10 km MT)', bpm:'110–146', z:'z3'},
         ]},
-      { label:'V. 41–48 · Taper inleds', km:'50–60',
+      { label:'V. 41–48 · Taper inleds', km:'30–40',
         days:[
-          {d:'Mån', t:'Lätt 60 min', bpm:'92–128', z:'z2'},
-          {d:'Tis', t:'Maratontempo 8 km', bpm:'128–146', z:'z3'},
-          {d:'Ons', t:'Lätt 40 min', bpm:'92–110', z:'z1'},
-          {d:'Tor', t:'Intervall 5×1000 m', bpm:'146–165', z:'z4'},
-          {d:'Fre', t:'Lätt 30 min', bpm:'92–110', z:'z1'},
-          {d:'Lör', t:'Långpass 20 km', bpm:'110–128', z:'z2'},
-          {d:'Sön', t:'Vila', bpm:'–', z:'vila'},
+          {d:'Pass 1', t:'Lätt Z2 60 min', bpm:'92–128', z:'z2'},
+          {d:'Pass 2', t:'Maratontempo 8 km + strides', bpm:'128–146', z:'z3'},
+          {d:'Pass 3', t:'Långpass 20 km', bpm:'110–128', z:'z2'},
         ]},
     ]},
   {
-    id:6, name:'TAPER & TÄVLING', period:'Mån 12 · V. 49–52', km:'20–40 km/v',
+    id:6, name:'TAPER & TÄVLING', period:'Mån 12 · V. 49–52', km:'15–25 km/v',
     color:'var(--purple)', bg:'rgba(192,132,252,0.12)',
     startWeek:49, endWeek:52,
     tip:'Ät välbekant frukost 2–3 h innan start. Håll igen de första 10 km. Negativ split är idealt. Km 29–35 är "muren" – håll tempo.',
     weeks:[
-      { label:'V. 49–50 · Taper –40%', km:'35–40',
+      { label:'V. 49–50 · Taper –40%', km:'20–25',
         days:[
-          {d:'Mån', t:'Lätt 50 min', bpm:'92–128', z:'z2'},
-          {d:'Tis', t:'Maratontempo 6 km', bpm:'128–146', z:'z3'},
-          {d:'Ons', t:'Lätt 35 min', bpm:'92–110', z:'z1'},
-          {d:'Tor', t:'Strides 4×100 m + 30 min', bpm:'128–146', z:'z3'},
-          {d:'Fre', t:'Vila', bpm:'–', z:'vila'},
-          {d:'Lör', t:'Lätt långpass 14 km', bpm:'92–128', z:'z2'},
-          {d:'Sön', t:'Vila', bpm:'–', z:'vila'},
+          {d:'Pass 1', t:'Lätt Z1–Z2 50 min', bpm:'92–128', z:'z2'},
+          {d:'Pass 2', t:'Maratontempo 6 km + strides 4×100 m', bpm:'128–146', z:'z3'},
+          {d:'Pass 3', t:'Lätt långpass 14 km', bpm:'92–128', z:'z2'},
         ]},
-      { label:'V. 51–52 · Tävlingsvecka', km:'20',
+      { label:'V. 51–52 · Tävlingsvecka', km:'15',
         days:[
-          {d:'Mån', t:'Lätt 35 min', bpm:'92–110', z:'z1'},
-          {d:'Tis', t:'Strides + 20 min lätt', bpm:'92–146', z:'z3'},
-          {d:'Ons', t:'Lätt 25 min', bpm:'92–110', z:'z1'},
-          {d:'Tor', t:'Promenad + stretching', bpm:'<92', z:'vila'},
-          {d:'Fre', t:'Vila. Pasta. Packa väskan.', bpm:'–', z:'vila'},
-          {d:'Lör', t:'Lugn 15 min + strides', bpm:'92–128', z:'z2'},
-          {d:'Sön', t:'🏅 MARATHON TÄVLINGSDAG!', bpm:'128–146', z:'race'},
+          {d:'Pass 1', t:'Lätt 35 min', bpm:'92–110', z:'z1'},
+          {d:'Pass 2', t:'Strides 4×100 m + 20 min lätt', bpm:'92–146', z:'z3'},
+          {d:'Pass 3', t:'🏅 MARATHON TÄVLINGSDAG!', bpm:'128–146', z:'race'},
         ]},
     ]},
 ];
@@ -1119,6 +1270,48 @@ function togglePhase(id) {
   document.getElementById('scrollArea').scrollTo({top: card.offsetTop - 60, behavior:'smooth'});
 }
 
+// ── COMPLETION TRACKING ──
+let completedSessions = JSON.parse(localStorage.getItem('completedSessions') || '{}');
+
+function toggleSession(weekNum, passIdx) {
+  const key = `${weekNum}-${passIdx}`;
+  if (completedSessions[key]) {
+    delete completedSessions[key];
+  } else {
+    completedSessions[key] = true;
+  }
+  localStorage.setItem('completedSessions', JSON.stringify(completedSessions));
+  updateProgress();
+}
+
+function getWeekCompleted(w, totalDays) {
+  let count = 0;
+  for (let i = 0; i < totalDays; i++) {
+    if (completedSessions[`${w}-${i}`]) count++;
+  }
+  return count;
+}
+
+function getTotalCompleted() {
+  return Object.keys(completedSessions).length;
+}
+
+// ── ADAPTATION LOGIC ──
+function getAdaptationInfo(week, prevDays) {
+  if (week <= 1) return null;
+  const prevWeek = week - 1;
+  const done = getWeekCompleted(prevWeek, prevDays.length);
+  const rate = done / prevDays.length;
+  if (rate === 0) {
+    return { type: 'missed', msg: '⚠️ <strong>Anpassat schema:</strong> Du missade alla pass förra veckan. Fokusera på pass 1 och 3 denna vecka – skippa kvalitetspasset om benen känns tunga. Ta det tillbaka lugnt.' };
+  } else if (rate < 0.67) {
+    return { type: 'partial', msg: `ℹ️ <strong>Lätt anpassning:</strong> ${done}/${prevDays.length} pass genomförda förra veckan. Ta det lite lugnare med intensiteten i kvalitetspasset.` };
+  } else if (rate === 1) {
+    return { type: 'good', msg: `✅ <strong>Bra jobbat!</strong> Alla ${done} pass genomförda förra veckan. Håll momentum!` };
+  }
+  return null;
+}
+
 // ── PROGRESS ──
 let currentWeek = parseInt(localStorage.getItem('marathonWeek') || '1');
 
@@ -1128,7 +1321,6 @@ function getPhaseForWeek(w) {
 
 function getWeekDays(w) {
   const phase = getPhaseForWeek(w);
-  // Find the right week block
   for (const wb of phase.weeks) {
     const match = wb.label.match(/V\.\s*(\d+)(?:–(\d+))?/);
     if (match) {
@@ -1164,19 +1356,200 @@ function updateProgress() {
     return `<div class="${cls}" style="${currentWeek >= p.startWeek && currentWeek <= p.endWeek ? 'background:'+p.color : ''}"></div>`;
   }).join('');
 
-  // Week days
+  // Week days with completion buttons
   const {days, km} = getWeekDays(currentWeek);
-  document.getElementById('cwcDays').innerHTML = days.map(d => `
-    <div class="day-row" style="padding:9px 16px">
-      <span class="day-abbr">${d.d}</span>
+  const doneThisWeek = getWeekCompleted(currentWeek, days.length);
+
+  // Week stats
+  document.getElementById('weekStats').innerHTML = `
+    <div class="week-stat-pill">
+      <div class="week-stat-n" style="color:var(--green)">${doneThisWeek}</div>
+      <div class="week-stat-l">Klara pass</div>
+    </div>
+    <div class="week-stat-pill">
+      <div class="week-stat-n">${days.length - doneThisWeek}</div>
+      <div class="week-stat-l">Kvar</div>
+    </div>
+    <div class="week-stat-pill">
+      <div class="week-stat-n" style="color:var(--accent)">${getTotalCompleted()}</div>
+      <div class="week-stat-l">Totalt klara</div>
+    </div>`;
+
+  // Adaptation banner
+  const prevDays = currentWeek > 1 ? getWeekDays(currentWeek - 1).days : days;
+  const adapt = getAdaptationInfo(currentWeek, prevDays);
+  const banner = document.getElementById('adaptBanner');
+  if (adapt) {
+    banner.className = 'adapt-banner ' + adapt.type;
+    banner.innerHTML = adapt.msg;
+    banner.style.display = 'block';
+  } else {
+    banner.style.display = 'none';
+  }
+
+  // Render day rows with check buttons
+  document.getElementById('cwcDays').innerHTML = days.map((d, i) => {
+    const key = `${currentWeek}-${i}`;
+    const done = !!completedSessions[key];
+    return `
+    <div class="day-row ${done ? 'day-done' : ''}" style="padding:9px 16px">
+      <span class="day-abbr" style="width:50px;font-size:10px">${d.d}</span>
       <span class="day-text">${d.t}</span>
-      <span class="day-bpm bpm-${d.z}">${d.bpm !== '–' ? d.bpm + ' bpm' : '–'}</span>
-    </div>`).join('');
+      <span class="day-bpm bpm-${d.z}" style="margin-right:8px">${d.bpm !== '–' ? d.bpm + ' bpm' : '–'}</span>
+      <button class="check-btn ${done ? 'checked' : ''}" onclick="toggleSession(${currentWeek},${i})" title="${done ? 'Markera som ej genomfört' : 'Markera som genomfört'}">
+        ${done ? '✓' : '○'}
+      </button>
+    </div>`;
+  }).join('');
 }
 
 function changeWeek(delta) {
   currentWeek = Math.max(1, Math.min(52, currentWeek + delta));
   updateProgress();
+}
+
+// ── SETTINGS ──
+function openSettings() {
+  const existing = localStorage.getItem('anthropicApiKey');
+  const input = document.getElementById('apiKeyInput');
+  const indicator = document.getElementById('keyIndicator');
+  const dot = document.getElementById('keyIndicatorDot');
+  const txt = document.getElementById('keyIndicatorText');
+  input.value = '';
+  input.placeholder = existing ? 'sk-ant-…' + existing.slice(-6) + '  (kvar — lämna tomt för att behålla)' : 'sk-ant-api03-…';
+  if (existing) {
+    indicator.className = 'api-key-indicator';
+    dot.textContent = '🟢';
+    txt.textContent = 'API-nyckel inlagd (…' + existing.slice(-6) + ')';
+  } else {
+    indicator.className = 'api-key-indicator missing';
+    dot.textContent = '⚪';
+    txt.textContent = 'Ingen API-nyckel inlagd';
+  }
+  document.getElementById('modalStatus').style.display = 'none';
+  document.getElementById('settingsModal').classList.add('open');
+}
+
+function closeSettings(e) {
+  if (!e || e.target === document.getElementById('settingsModal')) {
+    document.getElementById('settingsModal').classList.remove('open');
+  }
+}
+
+function saveApiKey() {
+  const val = document.getElementById('apiKeyInput').value.trim();
+  const status = document.getElementById('modalStatus');
+  if (!val) {
+    if (localStorage.getItem('anthropicApiKey')) {
+      status.textContent = 'Befintlig nyckel behålls.';
+      status.className = 'modal-status';
+      status.style.display = 'block';
+      setTimeout(closeSettings, 1200);
+    } else {
+      status.textContent = 'Ange en API-nyckel.';
+      status.className = 'modal-status error';
+      status.style.display = 'block';
+    }
+    return;
+  }
+  if (!val.startsWith('sk-ant-')) {
+    status.textContent = 'Ogiltigt format – nyckeln ska börja med sk-ant-';
+    status.className = 'modal-status error';
+    status.style.display = 'block';
+    return;
+  }
+  localStorage.setItem('anthropicApiKey', val);
+  status.textContent = '✓ Nyckel sparad!';
+  status.className = 'modal-status';
+  status.style.display = 'block';
+  setTimeout(closeSettings, 1200);
+}
+
+// ── AI ADVICE ──
+async function requestAIAdvice() {
+  const apiKey = localStorage.getItem('anthropicApiKey');
+  const btn = document.getElementById('aiAdviceBtn');
+  const card = document.getElementById('aiCard');
+  const cardText = document.getElementById('aiCardText');
+
+  if (!apiKey) {
+    card.classList.add('visible');
+    cardText.innerHTML = '<span style="color:var(--muted)">Ingen API-nyckel inställd. Tryck på ⚙️ uppe till höger och lägg till din Anthropic API-nyckel för att aktivera AI-råd.</span>';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '⏳ CLAUDE ANALYSERAR…';
+  card.classList.add('visible');
+  cardText.innerHTML = '<span style="color:var(--muted)">Läser din träningshistorik och formulerar råd…</span>';
+
+  try {
+    const phase = getPhaseForWeek(currentWeek);
+    const {days} = getWeekDays(currentWeek);
+    const doneThisWeek = getWeekCompleted(currentWeek, days.length);
+    const weeksLeft = 52 - currentWeek;
+
+    // Build history (last 5 weeks)
+    const historyLines = [];
+    for (let w = Math.max(1, currentWeek - 5); w < currentWeek; w++) {
+      const wd = getWeekDays(w).days;
+      const wDone = getWeekCompleted(w, wd.length);
+      const tag = wDone === 0 ? '❌ Missad' : wDone === wd.length ? '✅ Alla pass' : `⚠️ ${wDone}/${wd.length} pass`;
+      historyLines.push(`  Vecka ${w}: ${tag}`);
+    }
+
+    const passLines = days.map((d, i) => {
+      const done = !!completedSessions[`${currentWeek}-${i}`];
+      return `  - ${d.t} (${d.bpm} bpm) [${done ? '✅ KLAR' : '⏳ EJ KLAR'}]`;
+    }).join('\n');
+
+    const prompt = `Du är en erfaren löptränare. Hjälp Nicklas (37 år, HRmax 183 bpm) med hans marathon-förberedelser.
+
+PROGRAM: 52-veckors maratonprogram · 3 pass/vecka
+AKTUELL VECKA: ${currentWeek}/52 (${weeksLeft} veckor kvar till tävling)
+FAS: ${phase.id} – ${phase.name} (${phase.km})
+
+TRÄNINGSHISTORIK (senaste veckorna):
+${historyLines.length ? historyLines.join('\n') : '  Inga tidigare veckor registrerade ännu.'}
+
+VECKANS PLANERADE PASS (vecka ${currentWeek}):
+${passLines}
+Genomfört denna vecka: ${doneThisWeek}/${days.length} pass
+
+Ge ett konkret, personligt råd på 3–4 meningar. Basera rådet på historiken:
+- Om veckor har missats: hur återhämtar han bäst utan att skada sig?
+- Om han är i fas: taktiska tips för kommande vecka
+- Om deltävlingen/testloppet är nära: specifika råd för det
+Svara direkt på svenska utan inledningsfraser som "Hej" eller "Baserat på".`;
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 450,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err.error?.message || `HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    cardText.textContent = data.content[0].text;
+  } catch (err) {
+    cardText.innerHTML = `<span style="color:var(--accent2)">⚠️ ${err.message}. Kontrollera API-nyckeln i ⚙️-inställningarna.</span>`;
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '✨ FÅ NYTT AI-RÅD';
+  }
 }
 
 // ── NAVIGATION ──
