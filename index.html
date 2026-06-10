@@ -106,7 +106,7 @@ body {
   font-family: 'DM Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 0.5px;
-  padding: 4px 16px;
+  padding: 4px 8px;
   cursor: pointer;
   transition: color 0.2s;
 }
@@ -422,6 +422,55 @@ body {
   line-height: 1.6;
 }
 .phase-tip strong { color: var(--accent); }
+
+/* ── PPL STRENGTH VIEW ── */
+.ppl-week-grid {
+  display: grid; grid-template-columns: repeat(7,1fr); gap: 4px;
+  margin: 0 16px 16px;
+}
+.ppl-day-cell {
+  border-radius: 8px; padding: 7px 3px; font-size: 10px;
+  text-align: center; border: 1px solid var(--border); background: var(--surface);
+}
+.ppl-day-name { color: var(--muted); margin-bottom: 3px; font-size: 9px; }
+.ppl-day-type { font-weight: 600; font-size: 10px; }
+.ppl-day-push { background: rgba(192,132,252,0.1); border-color: rgba(192,132,252,0.25); }
+.ppl-day-push .ppl-day-type { color: var(--purple); }
+.ppl-day-pull { background: rgba(78,205,196,0.1); border-color: rgba(78,205,196,0.25); }
+.ppl-day-pull .ppl-day-type { color: var(--accent3); }
+.ppl-day-legs { background: rgba(255,107,53,0.1); border-color: rgba(255,107,53,0.25); }
+.ppl-day-legs .ppl-day-type { color: var(--accent2); }
+.ppl-day-run { background: rgba(127,215,127,0.08); border-color: rgba(127,215,127,0.2); }
+.ppl-day-run .ppl-day-type { color: var(--green); }
+.ppl-day-rest .ppl-day-type { color: var(--muted); }
+
+.ppl-session-block { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.ppl-session-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.ppl-session-badge {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: 1px; flex-shrink: 0;
+}
+.ppl-session-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; }
+.ppl-session-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.ppl-exercise-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.ppl-exercise-row:last-child { border-bottom: none; }
+.ppl-ex-name { flex: 1; font-size: 12px; line-height: 1.4; }
+.sets-badge {
+  font-size: 11px; font-weight: 600; padding: 2px 7px;
+  border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+  background: var(--surface2); color: var(--muted); border: 1px solid var(--border);
+}
+.ppl-sessions-wrap { display: flex; flex-direction: column; gap: 6px; padding: 12px 16px; }
+.ppl-desc-tip {
+  margin: 0 16px 12px; padding: 10px 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; font-size: 12px; color: var(--muted); line-height: 1.6;
+}
+.ppl-desc-tip strong { color: var(--text); }
 
 /* ── CHECK BUTTON ── */
 .check-btn {
@@ -781,13 +830,29 @@ body {
     </div>
   </div>
 
-  <!-- VIEW: SCHEMA -->
+  <!-- VIEW: SCHEMA (löpning + styrka) -->
   <div class="view" id="view-schema">
     <div style="padding:16px 16px 8px">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px">TRÄNINGSFASER</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:2px">Tryck på en fas för detaljerat schema</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px">SCHEMA</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px">Löpning · Styrka · Veckoöversikt</div>
     </div>
+
+    <div style="margin:0 16px 8px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--muted)">VECKOSTRUKTUR</div>
+    <div class="ppl-week-grid">
+      <div class="ppl-day-cell ppl-day-push"><div class="ppl-day-name">Mån</div><div class="ppl-day-type">Push</div></div>
+      <div class="ppl-day-cell ppl-day-run"><div class="ppl-day-name">Tis</div><div class="ppl-day-type">Löp</div></div>
+      <div class="ppl-day-cell ppl-day-pull"><div class="ppl-day-name">Ons</div><div class="ppl-day-type">Pull</div></div>
+      <div class="ppl-day-cell ppl-day-run"><div class="ppl-day-name">Tor</div><div class="ppl-day-type">Löp</div></div>
+      <div class="ppl-day-cell ppl-day-legs"><div class="ppl-day-name">Fre</div><div class="ppl-day-type">Legs</div></div>
+      <div class="ppl-day-cell ppl-day-run"><div class="ppl-day-name">Lör</div><div class="ppl-day-type">Löp</div></div>
+      <div class="ppl-day-cell ppl-day-rest"><div class="ppl-day-name">Sön</div><div class="ppl-day-type">Vila</div></div>
+    </div>
+
+    <div class="sec-title">LÖPNING · 52 VECKOR</div>
     <div class="phase-list" id="phaseList"></div>
+
+    <div class="sec-title" style="margin-top:8px">STYRKA · PPL · 3 MÅNADER</div>
+    <div class="phase-list" id="pplPhaseList"></div>
   </div>
 
   <!-- VIEW: TIMER -->
@@ -906,6 +971,14 @@ body {
         </div>
         <div id="cwcDays"></div>
       </div>
+      <div class="current-week-card" style="margin-top:12px">
+        <div class="cwc-header">
+          <div class="cwc-title" id="strengthTitle">STYRKA DENNA VECKA</div>
+          <div class="cwc-phase" id="strengthPhaseLabel">PPL M1</div>
+        </div>
+        <div id="strengthDays"></div>
+      </div>
+
       <button class="ai-advice-btn" id="aiAdviceBtn" onclick="requestAIAdvice()">
         ✨ FÅ AI-RÅD FRÅN CLAUDE
       </button>
@@ -1086,6 +1159,163 @@ const PHASES = [
         ]},
     ]},
 ];
+
+// ── PPL DATA ──
+const PPL_PHASES = [
+  {
+    id:1, name:'ADAPTION', period:'Månad 1 · V. 1–4',
+    color:'var(--accent3)', bg:'rgba(78,205,196,0.15)',
+    desc:'3–4 set × 8–12 reps · 60–70% av 1RM · vila 60–90 s · fokus på teknik och inlärning',
+    sessions:[
+      { key:'push', name:'PUSH', subtitle:'Bröst · Axlar · Triceps', day:'Måndag',
+        color:'var(--purple)', bg:'rgba(192,132,252,0.15)',
+        exercises:[
+          {name:'Bänkpress (skivstång)', sets:'4×8-10'},
+          {name:'Militärpress (skivstång)', sets:'3×8-10'},
+          {name:'Inklinerad hantelpress', sets:'3×10-12'},
+          {name:'Lateral raises (hantlar)', sets:'3×12-15'},
+          {name:'Overhead triceps ext. (hantel)', sets:'3×12'},
+          {name:'Skullcrushers (skivstång)', sets:'3×10-12'},
+        ]},
+      { key:'pull', name:'PULL', subtitle:'Rygg · Biceps · Rear Delts', day:'Onsdag',
+        color:'var(--accent3)', bg:'rgba(78,205,196,0.12)',
+        exercises:[
+          {name:'Marklyft (skivstång)', sets:'4×5'},
+          {name:'Bent-over row (skivstång)', sets:'4×8-10'},
+          {name:'En-arms hantelrodd', sets:'3×10-12'},
+          {name:'Rear delt raises (hantlar)', sets:'3×12-15'},
+          {name:'Hammer curl (hantlar)', sets:'3×12'},
+          {name:'Bicep curl (skivstång)', sets:'3×10-12'},
+        ]},
+      { key:'legs', name:'LEGS', subtitle:'Quads · Hamstrings · Glutes', day:'Fredag',
+        color:'var(--accent2)', bg:'rgba(255,107,53,0.12)',
+        exercises:[
+          {name:'Knäböj (skivstång)', sets:'4×8-10'},
+          {name:'Romanian deadlift', sets:'3×10-12'},
+          {name:'Bulgarian split squat (hantlar)', sets:'3×10-12/ben'},
+          {name:'Liggande hantelcurl', sets:'3×12-15'},
+          {name:'Goblet squat (hantel)', sets:'3×12'},
+          {name:'Vadpress (stående)', sets:'4×15-20'},
+        ]},
+    ]},
+  {
+    id:2, name:'INTENSIFIERING', period:'Månad 2 · V. 5–8',
+    color:'var(--accent)', bg:'rgba(232,255,71,0.08)',
+    desc:'4 set × 6–10 reps · 70–80% av 1RM · vila 90–120 s · progressiv överlast varje pass',
+    sessions:[
+      { key:'push', name:'PUSH', subtitle:'Bröst · Axlar · Triceps', day:'Måndag',
+        color:'var(--purple)', bg:'rgba(192,132,252,0.15)',
+        exercises:[
+          {name:'Bänkpress (skivstång)', sets:'4×6-8'},
+          {name:'Militärpress (skivstång)', sets:'4×6-8'},
+          {name:'Inklinerad hantelpress', sets:'4×8-10'},
+          {name:'Lateral raises', sets:'4×12-15'},
+          {name:'Skullcrushers', sets:'4×8-10'},
+          {name:'Overhead triceps ext.', sets:'3×10-12'},
+        ]},
+      { key:'pull', name:'PULL', subtitle:'Rygg · Biceps · Rear Delts', day:'Onsdag',
+        color:'var(--accent3)', bg:'rgba(78,205,196,0.12)',
+        exercises:[
+          {name:'Marklyft (skivstång)', sets:'4×4-5'},
+          {name:'Bent-over row', sets:'4×6-8'},
+          {name:'Inklinerad hantelcurl', sets:'4×10-12'},
+          {name:'En-arms hantelrodd', sets:'4×8-10'},
+          {name:'Rear delt raises', sets:'3×12-15'},
+          {name:'Hammer curl', sets:'3×12'},
+        ]},
+      { key:'legs', name:'LEGS', subtitle:'Quads · Hamstrings · Glutes', day:'Fredag',
+        color:'var(--accent2)', bg:'rgba(255,107,53,0.12)',
+        exercises:[
+          {name:'Knäböj (skivstång)', sets:'4×6-8'},
+          {name:'Romanian deadlift', sets:'4×8-10'},
+          {name:'Bulgarian split squat', sets:'4×8-10/ben'},
+          {name:'Hip thrust (skivstång)', sets:'3×10-12'},
+          {name:'Liggande hantelcurl', sets:'3×12'},
+          {name:'Vadpress', sets:'4×15-20'},
+        ]},
+    ]},
+  {
+    id:3, name:'PEAK', period:'Månad 3 · V. 9–12',
+    color:'var(--accent2)', bg:'rgba(255,107,53,0.1)',
+    desc:'4–5 set · mix tung (4–6 reps) + volym (12–15) · dropsets & supersets · vila efter känsla',
+    sessions:[
+      { key:'push', name:'PUSH', subtitle:'Bröst · Axlar · Triceps', day:'Måndag',
+        color:'var(--purple)', bg:'rgba(192,132,252,0.15)',
+        exercises:[
+          {name:'Bänkpress (skivstång)', sets:'5×5 (tung)'},
+          {name:'Militärpress', sets:'4×8'},
+          {name:'Inklinerad hantelpress', sets:'3×10 + dropset'},
+          {name:'Lateral raises', sets:'4×15-20'},
+          {name:'Skullcrushers + CG bench SS', sets:'3×10+10'},
+          {name:'Overhead ext. (finisher)', sets:'3×12'},
+        ]},
+      { key:'pull', name:'PULL', subtitle:'Rygg · Biceps · Rear Delts', day:'Onsdag',
+        color:'var(--accent3)', bg:'rgba(78,205,196,0.12)',
+        exercises:[
+          {name:'Marklyft', sets:'3×3 + 2×8 backoff'},
+          {name:'Bent-over row', sets:'4×6-8'},
+          {name:'Inklinerad hantelcurl', sets:'3×10 + dropset'},
+          {name:'En-arms hantelrodd', sets:'4×8-10'},
+          {name:'Rear delt raise superset', sets:'3×12+12'},
+          {name:'Bicep 21s (hantlar)', sets:'3×21'},
+        ]},
+      { key:'legs', name:'LEGS', subtitle:'Quads · Hamstrings · Glutes', day:'Fredag',
+        color:'var(--accent2)', bg:'rgba(255,107,53,0.12)',
+        exercises:[
+          {name:'Knäböj', sets:'4×5 + 1×AMRAP'},
+          {name:'Romanian deadlift', sets:'4×8-10'},
+          {name:'Bulgarian split squat', sets:'4×8-10/ben'},
+          {name:'Hip thrust SS hantelcurl', sets:'3×10+10'},
+          {name:'Walking lunges (hantlar)', sets:'3×12/ben'},
+          {name:'Vadpress', sets:'5×20-25'},
+        ]},
+    ]},
+];
+
+// ── RENDER PPL PHASES ──
+function renderPPLPhases() {
+  const list = document.getElementById('pplPhaseList');
+  list.innerHTML = PPL_PHASES.map(p => `
+    <div class="phase-card" id="ppl-phase-${p.id}">
+      <button class="phase-header-btn" onclick="togglePPLPhase(${p.id})">
+        <div class="phase-num-badge" style="background:${p.bg};color:${p.color}">M${p.id}</div>
+        <div class="phase-info">
+          <div class="phase-name-txt" style="color:${p.color}">${p.name}</div>
+          <div class="phase-period-txt">${p.period}</div>
+        </div>
+        <div>
+          <div class="phase-km-txt" style="color:${p.color};font-size:10px">3 pass/v</div>
+          <div class="phase-chevron">▾</div>
+        </div>
+      </button>
+      <div class="phase-body-inner">
+        <div class="ppl-desc-tip"><strong>Belastning:</strong> ${p.desc}</div>
+        <div class="ppl-sessions-wrap">
+          ${p.sessions.map(s => `
+            <div class="ppl-session-block">
+              <div class="ppl-session-header">
+                <div class="ppl-session-badge" style="background:${s.bg};color:${s.color}">${s.key.toUpperCase()}</div>
+                <div>
+                  <div class="ppl-session-name" style="color:${s.color}">${s.name}</div>
+                  <div class="ppl-session-sub">${s.subtitle} · ${s.day}</div>
+                </div>
+              </div>
+              ${s.exercises.map(e => `
+                <div class="ppl-exercise-row">
+                  <span class="ppl-ex-name">${e.name}</span>
+                  <span class="sets-badge">${e.sets}</span>
+                </div>`).join('')}
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function togglePPLPhase(id) {
+  const card = document.getElementById('ppl-phase-' + id);
+  card.classList.toggle('open');
+  document.getElementById('scrollArea').scrollTo({top: card.offsetTop - 60, behavior:'smooth'});
+}
 
 // ── STOPWATCH ──
 let swInterval = null, swStart = 0, swElapsed = 0, swRunning = false;
@@ -1272,6 +1502,26 @@ function togglePhase(id) {
 
 // ── COMPLETION TRACKING ──
 let completedSessions = JSON.parse(localStorage.getItem('completedSessions') || '{}');
+let completedStrength = JSON.parse(localStorage.getItem('completedStrength') || '{}');
+
+function getPPLPhaseForWeek(w) {
+  const idx = (w - 1) % 12;
+  if (idx < 4) return PPL_PHASES[0];
+  if (idx < 8) return PPL_PHASES[1];
+  return PPL_PHASES[2];
+}
+
+function toggleStrength(weekNum, session) {
+  const key = weekNum + '-' + session;
+  if (completedStrength[key]) { delete completedStrength[key]; }
+  else { completedStrength[key] = true; }
+  localStorage.setItem('completedStrength', JSON.stringify(completedStrength));
+  updateProgress();
+}
+
+function getStrengthDoneThisWeek(w) {
+  return ['push','pull','legs'].filter(s => completedStrength[w + '-' + s]).length;
+}
 
 function toggleSession(weekNum, passIdx) {
   const key = `${weekNum}-${passIdx}`;
@@ -1361,17 +1611,18 @@ function updateProgress() {
   const doneThisWeek = getWeekCompleted(currentWeek, days.length);
 
   // Week stats
+  const strengthDone = getStrengthDoneThisWeek(currentWeek);
   document.getElementById('weekStats').innerHTML = `
     <div class="week-stat-pill">
-      <div class="week-stat-n" style="color:var(--green)">${doneThisWeek}</div>
-      <div class="week-stat-l">Klara pass</div>
+      <div class="week-stat-n" style="color:var(--green)">${doneThisWeek}/3</div>
+      <div class="week-stat-l">Löp klara</div>
     </div>
     <div class="week-stat-pill">
-      <div class="week-stat-n">${days.length - doneThisWeek}</div>
-      <div class="week-stat-l">Kvar</div>
+      <div class="week-stat-n" style="color:var(--purple)">${strengthDone}/3</div>
+      <div class="week-stat-l">Styrka klara</div>
     </div>
     <div class="week-stat-pill">
-      <div class="week-stat-n" style="color:var(--accent)">${getTotalCompleted()}</div>
+      <div class="week-stat-n" style="color:var(--accent)">${getTotalCompleted() + Object.keys(completedStrength).length}</div>
       <div class="week-stat-l">Totalt klara</div>
     </div>`;
 
@@ -1386,6 +1637,24 @@ function updateProgress() {
   } else {
     banner.style.display = 'none';
   }
+
+  // Render strength sessions
+  const pplPhase = getPPLPhaseForWeek(currentWeek);
+  document.getElementById('strengthTitle').textContent = 'STYRKA DENNA VECKA';
+  document.getElementById('strengthPhaseLabel').textContent = 'PPL Månad ' + pplPhase.id;
+  const dayMap = {push:'Mån', pull:'Ons', legs:'Fre'};
+  document.getElementById('strengthDays').innerHTML = pplPhase.sessions.map(s => {
+    const key = currentWeek + '-' + s.key;
+    const done = !!completedStrength[key];
+    return `<div class="day-row ${done ? 'day-done' : ''}" style="padding:9px 16px">
+      <span class="day-abbr" style="width:38px;font-size:10px">${dayMap[s.key]}</span>
+      <span class="day-text">${s.name} · <span style="color:var(--muted);font-size:11px">${s.subtitle}</span></span>
+      <span class="day-bpm" style="margin-right:8px;background:${s.bg};color:${s.color};border:none">M${pplPhase.id}</span>
+      <button class="check-btn ${done ? 'checked' : ''}" onclick="toggleStrength(${currentWeek},'${s.key}')" title="${done ? 'Markera som ej genomfört' : 'Markera som genomfört'}">
+        ${done ? '✓' : '○'}
+      </button>
+    </div>`;
+  }).join('');
 
   // Render day rows with check buttons
   document.getElementById('cwcDays').innerHTML = days.map((d, i) => {
@@ -1564,6 +1833,7 @@ function switchView(name, btn) {
 
 // ── INIT ──
 renderPhases();
+renderPPLPhases();
 updateProgress();
 
 // Register service worker
